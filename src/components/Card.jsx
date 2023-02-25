@@ -1,5 +1,6 @@
 import "./Card.css";
 import React, { useState, useEffect } from "react";
+import Switchx from "./Switchx"
 
 function Card() {
     const apiKey = "134d26ac91119b88ca2ffc3d8cb365ea";
@@ -41,6 +42,7 @@ function Card() {
 
     return (
         <div className="container">
+            <Switchx></Switchx>
             {temperatura <= 10 ? <img src="https://noticiasdeescobar.com/wp-content/uploads/2019/08/invierno-gente-abrigada.jpg" className="image"></img> : <img src="https://estaticos.elperiodico.com/resources/jpg/2/6/messi-saluda-grada-animacion-tras-anotar-durante-partido-liga-entre-barcelona-eibar-1547412391062.jpg" className="image"></img>}
 
 
