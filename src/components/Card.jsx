@@ -1,6 +1,7 @@
 import "./Card.css";
 import React, { useState, useEffect } from "react";
 import Switchx from "./Switchx"
+import TextField from '@mui/material/TextField';
 
 function Card() {
     const apiKey = "134d26ac91119b88ca2ffc3d8cb365ea";
@@ -47,10 +48,10 @@ function Card() {
 
 
             <form method="GET" className="centering">
-                <input
-                    type="search"
-                    onChange={(e) => handleFilterBySearch(e.target.value)}
-                ></input>
+                <TextField className="textFilled" label="Ciudad" variant="filled" type="search"
+                    onChange={(e) => handleFilterBySearch(e.target.value)}>
+
+                </TextField>
             </form>
             {city.length == 0 ? <h2>busca tu Ciudad!</h2> : (<>  <h2>Ciudad de: {city}</h2>
                 <h3>Temperatura: {temperatura}</h3>

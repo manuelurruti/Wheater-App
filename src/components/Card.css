@@ -16,3 +16,15 @@
   background-color: rgb(111, 111, 111);
   border-radius: 15px;
 }
+.textFilled{
+  background-color: antiquewhite;
+  border-bottom:3px solid blueviolet;
+  border-radius: 5px;
+
+}
+.css-1ff8729-MuiInputBase-root-MuiFilledInput-root:after{
+  border-bottom:3px solid blueviolet;
+  color:blueviolet;
+  fill: blueviolet;
+  
+}
