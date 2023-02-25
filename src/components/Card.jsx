@@ -7,6 +7,7 @@ function Card() {
     const [descripcion, setDescripcion] = useState("");
     const [icono, setIcono] = useState("");
     const [city, setCity] = useState("");
+    const [loading, setLoading] = useState(true)
     const [url, setUrl] = useState(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
     );
@@ -35,22 +36,27 @@ function Card() {
                 }
             })
             .catch((e) => console.log(e));
+        setLoading(false);
     }, [url]);
 
     return (
         <div className="container">
-            <img src="../../public/wather.jpg" className="image"></img>
-            <h2>Buscar ciudad y averigua su clima</h2>
+            {temperatura <= 10 ? <img src="https://noticiasdeescobar.com/wp-content/uploads/2019/08/invierno-gente-abrigada.jpg" className="image"></img> : <img src="https://estaticos.elperiodico.com/resources/jpg/2/6/messi-saluda-grada-animacion-tras-anotar-durante-partido-liga-entre-barcelona-eibar-1547412391062.jpg" className="image"></img>}
+
+
             <form method="GET" className="centering">
                 <input
                     type="search"
                     onChange={(e) => handleFilterBySearch(e.target.value)}
                 ></input>
             </form>
-            <h2>Ciudad de: {city}</h2>
-            <h3>Temperatura: {temperatura}</h3>
-            <p>Descripcion: {descripcion} </p>
-            <img src={icono}></img>
+            {city.length == 0 ? <h2>busca tu Ciudad!</h2> : (<>  <h2>Ciudad de: {city}</h2>
+                <h3>Temperatura: {temperatura}</h3>
+                <p>Descripcion: {descripcion} </p>
+                <img src={icono} className="ChangeColor"></img></>)}
+            <div>
+            </div>
+
         </div>
     );
 }
