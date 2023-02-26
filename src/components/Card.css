@@ -1,6 +1,13 @@
+*{
+  padding:0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
 .image{
   height: 250px;
-  width:350px
+  width:350px;
+  padding-top: 30px;
+  padding-bottom: 15px;
 }
 .button{
   margin-left: 15px;
@@ -11,20 +18,31 @@
   justify-content: center;
   align-items: center;
 }
-.ChangeColor{
-  
-  background-color: rgb(111, 111, 111);
-  border-radius: 15px;
-}
+
 .textFilled{
   background-color: antiquewhite;
-  border-bottom:3px solid blueviolet;
+ 
   border-radius: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
 }
-.css-1ff8729-MuiInputBase-root-MuiFilledInput-root:after{
-  border-bottom:3px solid blueviolet;
-  color:blueviolet;
-  fill: blueviolet;
-  
+
+div.light-mode{
+  background-color: #333;
+  color: #fff;
+}
+div.dark-mode{
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+#contento{
+ height:70vh;
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;}
+.parrafo{
+  padding:10px;
 }

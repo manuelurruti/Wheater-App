@@ -10,7 +10,8 @@ function Card() {
     const [descripcion, setDescripcion] = useState("");
     const [icono, setIcono] = useState("");
     const [city, setCity] = useState("");
-    const [loading, setLoading] = useState(true)
+    const [mode, setMode] = useState('light');
+
 
     const [humidity, setHumidity] = useState("")
 
@@ -46,34 +47,61 @@ function Card() {
                 }
             })
             .catch((e) => console.log(e));
-        setLoading(false);
+
     }, [url]);
+    function toggleMode() {
+        setMode(mode === 'light' ? 'dark' : 'light');
+        const element = document.getElementById('content');
+        element.classList.toggle('dark-mode');
+    }
+
+    useEffect(() => {
+        document.body.classList.remove('light-mode', 'dark-mode');
+        document.body.classList.add(`${mode}-mode`);
+    }, [mode]);
+
+    let ropa;
+
+    if (temperatura > 28) {
+        ropa = <p> 👕 🩳 🩴</p>
+    }
+    else if (temperatura > 15 && temperatura < 28) {
+        ropa = <p> 👕👖👟</p>
+    }
+    else if (temperatura >= 0 && temperatura <= 15) {
+        ropa = <p> 👔👖👟</p>
+    }
+    else {
+        ropa = <p> Abrigate con todo lo que tengas!</p>
+    }
 
     return (
-        <div className="container">
-            <Switchx></Switchx>
-            {sensTermica <= 10 ? <img src="https://noticiasdeescobar.com/wp-content/uploads/2019/08/invierno-gente-abrigada.jpg" className="image"></img> : <img src="https://estaticos.elperiodico.com/resources/jpg/2/6/messi-saluda-grada-animacion-tras-anotar-durante-partido-liga-entre-barcelona-eibar-1547412391062.jpg" className="image"></img>}
+        <div id="content" className="light-mode">
+            <button onClick={toggleMode} className="Changemode">Cambiar modo</button>
+            <div id="contento" >
+                {sensTermica <= 10 ? <img src="https://noticiasdeescobar.com/wp-content/uploads/2019/08/invierno-gente-abrigada.jpg" className="image"></img> : <img src="https://estaticos.elperiodico.com/resources/jpg/2/6/messi-saluda-grada-animacion-tras-anotar-durante-partido-liga-entre-barcelona-eibar-1547412391062.jpg" className="image"></img>}
 
 
-            <form method="GET" className="centering">
-                <TextField className="textFilled" label="Ciudad" variant="filled" type="search"
-                    onChange={(e) => handleFilterBySearch(e.target.value)}>
+                <form method="GET" className="centering">
+                    <TextField className="textFilled" label="Ciudad" variant="filled" type="search"
+                        onChange={(e) => handleFilterBySearch(e.target.value)}>
 
-                </TextField>
-            </form>
-            {city.length == 0 ? <h2>busca tu Ciudad!</h2> : (<>  <h2>Ciudad de: {city}</h2>
-                <h2>Temperatura: {temperatura}</h2>
-                <h3>Sensacion termica: {sensTermica}</h3>
-                <p>Descripcion: {descripcion} </p>
+                    </TextField>
+                </form>
 
-                <p>Humedad: {humidity}</p>
+                {city.length == 0 ? <h2 className="parrafo">busca tu Ciudad!</h2> : (<>  <h2>Ciudad de: {city}</h2>
+                    <h3 className="parrafo">Temperatura: {temperatura}</h3>
+                    <h3 className="parrafo">Sensacion termica: {sensTermica}</h3>
+                    <h3 className="parrafo">Descripcion: {descripcion} </h3>
 
-                <img src={icono} className="ChangeColor"></img></>)}
-            <h2>Te recomendamos vestirte con: </h2>
-            <div>
+                    <h3 className="parrafo">Humedad: {humidity}</h3>
+
+                    <img src={icono} className="ChangeColoxr"></img></>)}
+                <h2 className="parrafo">Te recomendamos vestirte con: {ropa}</h2>
+
+
             </div>
-
-        </div>
+        </div >
     );
 }
 
