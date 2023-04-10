@@ -26,7 +26,7 @@ function Card() {
         setCity(search);
     };
 
-    // Realiza la solicitud a la API utilizando fetch
+
     useEffect(() => {
         fetch(url)
             .then((response) => response.json())
@@ -49,11 +49,7 @@ function Card() {
             .catch((e) => console.log(e));
 
     }, [url]);
-    function toggleMode() {
-        setMode(mode === 'light' ? 'dark' : 'light');
-        const element = document.getElementById('content');
-        element.classList.toggle('dark-mode');
-    }
+
 
     useEffect(() => {
         document.body.classList.remove('light-mode', 'dark-mode');
