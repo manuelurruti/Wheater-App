@@ -32,7 +32,7 @@ function Card() {
             .then((response) => response.json())
             .then((data) => {
                 if (data.main) {
-                    console.log(data);
+
                     setSensTermica(data.main.feels_like);
                     setDescripcion(data.weather[0].description);
                     setCity(data.name);
@@ -60,26 +60,12 @@ function Card() {
         document.body.classList.add(`${mode}-mode`);
     }, [mode]);
 
-    let ropa;
 
-    if (temperatura > 28) {
-        ropa = <p> 👕 🩳 🩴</p>
-    }
-    else if (temperatura > 15 && temperatura < 28) {
-        ropa = <p> 👕👖👟</p>
-    }
-    else if (temperatura >= 0 && temperatura <= 15) {
-        ropa = <p> 👔👖👟</p>
-    }
-    else {
-        ropa = <p> Abrigate con todo lo que tengas!</p>
-    }
 
-    return (
-        <div id="content" className="light-mode">
-            <button onClick={toggleMode} className="Changemode">Cambiar modo</button>
-            <div id="contento" >
-                {sensTermica <= 10 ? <img src="https://noticiasdeescobar.com/wp-content/uploads/2019/08/invierno-gente-abrigada.jpg" className="image"></img> : <img src="https://estaticos.elperiodico.com/resources/jpg/2/6/messi-saluda-grada-animacion-tras-anotar-durante-partido-liga-entre-barcelona-eibar-1547412391062.jpg" className="image"></img>}
+    return (<div className="light-mode">           
+        <div id="content" className="height light-mode"> 
+            <div id="contento" className="container">
+             
 
 
                 <form method="GET" className="centering">
@@ -97,11 +83,12 @@ function Card() {
                     <h3 className="parrafo">Humedad: {humidity}</h3>
 
                     <img src={icono} className="ChangeColoxr"></img></>)}
-                <h2 className="parrafo">Te recomendamos vestirte con: {ropa}</h2>
+                
 
 
             </div>
         </div >
+        </div>
     );
 }
 

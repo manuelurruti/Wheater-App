@@ -32,6 +32,7 @@ div.light-mode{
   background-color: #333;
   color: #fff;
 }
+
 div.dark-mode{
   background-color: #f0f0f0;
   color: #000;
@@ -45,4 +46,23 @@ div.dark-mode{
  flex-direction: column;}
 .parrafo{
   padding:10px;
+}
+.container{
+  
+
+  width:70%;
+  border: 1px solid rgb(104, 104, 104);
+  border-radius: 5%;
+  background-color: #f0f0f01c;
+  
+}
+.height{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#content{
+  background-image: url("../../photo.jpg")
 }
